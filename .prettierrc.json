@@ -1,0 +1,10 @@
+{
+    "useTabs": false,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "arrowParens": "avoid",
+
+    "plugins": [
+        "prettier-plugin-svelte"
+    ]
+}
