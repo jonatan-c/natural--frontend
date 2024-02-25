@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const BACKEND_URL =
-  process.env.REACT_APP_BACKEND_URL ?? "http://localhost:3000/api";
+  process.env.REACT_APP_BACKEND_URL ?? "http://localhost:4000/api";
 
 export const pokemonApi = createApi({
   reducerPath: "pokemonApi",
