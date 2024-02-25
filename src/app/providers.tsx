@@ -10,7 +10,6 @@ export function Providers({ children }: any) {
       <ThemeProvider attribute="class">
         <Provider store={store}>{children}</Provider>
       </ThemeProvider>
-      ;
     </>
   );
 }
