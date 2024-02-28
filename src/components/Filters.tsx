@@ -1,18 +1,22 @@
 import { useGetTypesOfPokemonsQuery } from "@/api/pokemonApi";
-import React from "react";
+import React, { useEffect } from "react";
 
-const Filters = ({ setFilterParams }: any) => {
+const Filters = ({ setFilterParams, filterParams }: any) => {
   const { data: types } = useGetTypesOfPokemonsQuery("");
-
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(e.target.name.value);
-    console.log(e.target.type.value);
     setFilterParams({
       name: e.target.name.value,
       type: e.target.type.value,
     });
   };
+
+  useEffect(() => {
+    setFilterParams((params: any) => ({
+      ...params,
+      page: filterParams?.currentPage,
+    }));
+  }, [filterParams?.currentPage]);
 
   return (
     <>

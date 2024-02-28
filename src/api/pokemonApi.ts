@@ -1,3 +1,4 @@
+import { IRespPokemon, IRespPokemonByID, IRespTypes } from "@/interfaces";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const BACKEND_URL =
@@ -7,16 +8,19 @@ export const pokemonApi = createApi({
   reducerPath: "pokemonApi",
   baseQuery: fetchBaseQuery({ baseUrl: BACKEND_URL }),
   endpoints: builder => ({
-    getPokemonsFiltered: builder.query<any, { name?: string; type?: string }>({
-      query: ({ name, type }) => ({
+    getPokemonsFiltered: builder.query<
+      IRespPokemon,
+      { name?: string; type?: string; limit?: number; page?: number }
+    >({
+      query: ({ name, type, limit, page }) => ({
         url: `pokemon`,
-        params: { name, type },
+        params: { name, type, limit, page },
       }),
     }),
-    getTypesOfPokemons: builder.query({
+    getTypesOfPokemons: builder.query<IRespTypes, any>({
       query: () => `/types`,
     }),
-    getPokemonById: builder.query<any, any>({
+    getPokemonById: builder.query<IRespPokemonByID, any>({
       query: id => `/pokemon/${id}`,
     }),
   }),
