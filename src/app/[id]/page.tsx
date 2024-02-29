@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 "use client";
 
 import React from "react";
@@ -29,8 +30,8 @@ const PokemonDetail = ({ params }: any) => {
           {pokemonData?.data.name}
         </h3>
         <Image
-          src={pokemonData?.data.sprites?.front_default}
-          alt={pokemonData?.data.name}
+          src={pokemonData?.data?.sprites?.front_default || ""}
+          alt={pokemonData?.data?.name || ""}
           width={200}
           height={200}
           className="mx-auto"
